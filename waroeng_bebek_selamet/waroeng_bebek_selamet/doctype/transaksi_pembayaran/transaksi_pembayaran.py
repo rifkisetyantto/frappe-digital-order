@@ -8,3 +8,12 @@ from frappe.model.document import Document
 
 class TransaksiPembayaran(Document):
 	pass
+
+	def on_submit(self):
+		self.change_status_transaksi()
+
+	def change_status_transaksi(self):
+		if(self.id_pesanan):
+			bayar = frappe.get_doc("Report Order",self.id_pelanggan)
+			bayar.status = 'Sudah Bayar'
+			bayar.save()

@@ -17,5 +17,13 @@ frappe.ui.form.on('Transaksi Pembayaran', {
 			}
 		}
 		})
+	},
+	metode_pembayaran: function(frm){
+		if(metode_pembayaran == 'Point'){
+			//proses
+		}
+		else{
+			// proses cash
+		}
 	}
 });
