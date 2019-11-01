@@ -26,5 +26,5 @@
 			total_harga = total_harga + sub_total[a].sub_total
 			}
 		
-			frm.set_value("total_harga",total_harga)
+			frm.set_value("harga",total_harga)
 		})
