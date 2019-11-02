@@ -31,4 +31,4 @@ class RequestOrder(Document):
 			report_order.save()
 			new_report_order = frappe.get_doc("Report Order", report_order.name)
 			frappe.msgprint(
-				'Success Create Report Order with doc no {}'.format(new_report_order))
+				'Success Create Report Order {}'.format(new_report_order))
