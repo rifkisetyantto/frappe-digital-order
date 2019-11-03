@@ -2,6 +2,7 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Transaksi Pembayaran', {
+	
 	id_order: function(frm) {
 		frappe.call({
 			method: "frappe.client.get",
@@ -18,6 +19,10 @@ frappe.ui.form.on('Transaksi Pembayaran', {
 					let dapet_poin = frm.doc.total_harga * 0.05
 					frm.set_value("estimasi_point",dapet_poin)
 				}
+				// else if(r.message.status == 'Bronze'){
+				// 	let dapet_poin = frm.doc.total_harga * 0.03
+				// 	frm.set_value("estimasi_point",dapet_poin)
+				// }
 				else{
 					let dapet_poin = frm.doc.total_harga * 0.03
 					frm.set_value("estimasi_point",dapet_poin)
@@ -36,6 +41,21 @@ frappe.ui.form.on('Transaksi Pembayaran', {
 
 	potongan_harga: function(frm) {
 		total_harga(frm);
+	},
+	jml_cash: function(frm,cdn,cdt) {
+		if (frm.doc.jml_cash < frm.doc.total_harga){
+			frm.set_value("kembalian",'')
+			frappe.throw('Uang anda kurang. Gaboleh Ngutang!!');
+		}
+		else {
+			let harga = frm.doc.harga
+			let potongan = frm.doc.potongan_harga
+			let jumlah_cash = frm.doc.jml_cash
+
+			let total = harga-potongan
+			let hasil = jumlah_cash-total
+			frm.set_value("kembalian", hasil)
+		}
 	}
 });
 
