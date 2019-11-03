@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Transaksi Pembayaran', {
-	id_pelanggan: function(frm) {
+	id_order: function(frm) {
 		frappe.call({
 			method: "frappe.client.get",
 			args: {
@@ -56,3 +56,12 @@ let total_harga = function(frm) {
 	let total = harga-potongan
 	frm.set_value("total_harga",total)
 }
+
+cur_frm.set_query('id_order', function(doc,cdt,cdn){
+	var d = locals[cdt][cdn];
+	return{
+		filters: [
+			['Report Order', 'status_pesanan', '=', 'Belum Bayar']
+		]
+	}
+});
