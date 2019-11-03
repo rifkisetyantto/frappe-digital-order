@@ -15,12 +15,7 @@ frappe.ui.form.on("Menu Makanan Poin Line", {
 
 	harga_poin: function(frm, cdt, cdn){
 		jumlah_total(frm, cdt, cdn);
-	},
-	// save: function(frm,cdt,cdn){
-	// 	if(frm.doc.jml_poin < frm.doc.point){
-	// 		frappe.throw('Poin Anda Tidak Mencukupi!');
-	// 	}
-	// }
+	}
 });
 
 let jumlah_total = function(frm, cdt, cdn) {
@@ -36,5 +31,7 @@ frappe.ui.form.on("Menu Makanan Poin Line", "sub_total", function(frm, cdt, cdn)
 	total_harga = total_harga + sub_total[a].sub_total
 	}
 
+	
 	frm.set_value("jml_poin",total_harga)
+	
 })
