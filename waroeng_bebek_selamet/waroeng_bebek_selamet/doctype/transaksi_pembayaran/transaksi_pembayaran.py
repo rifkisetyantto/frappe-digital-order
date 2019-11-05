@@ -12,7 +12,6 @@ class TransaksiPembayaran(Document):
 	def validate(self):
 		self.change_status_transaksi()
 		self.get_point()
-		# self.status_change()
 
 	def change_status_transaksi(self):
 		transaksi = frappe.get_doc("Report Order",self.id_order)

@@ -11,7 +11,6 @@ class PenukaranPoin(Document):
 
 	def on_submit(self):
 		self.on_approve()
-		# self.kurang_point()
 
 	def on_approve(self):
 		if(self.docstatus == 1):

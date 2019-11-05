@@ -19,10 +19,6 @@ frappe.ui.form.on('Transaksi Pembayaran', {
 					let dapet_poin = frm.doc.total_harga * 0.05
 					frm.set_value("estimasi_point",dapet_poin)
 				}
-				// else if(r.message.status == 'Bronze'){
-				// 	let dapet_poin = frm.doc.total_harga * 0.03
-				// 	frm.set_value("estimasi_point",dapet_poin)
-				// }
 				else{
 					let dapet_poin = frm.doc.total_harga * 0.03
 					frm.set_value("estimasi_point",dapet_poin)
